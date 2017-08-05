@@ -1,28 +1,27 @@
-<h1>Catalog</h1>
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
 
-<!-- Split button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-danger">Action</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
+<div class="btn btn-default" role="button"><%= link_to 'New Product', new_product_path %></div> 
+
+<div class="row">
+	<% @products.each do |product| %>
+  <div class="col-sm-12 col-md-3">
+    <div class="product">
+    	<div class="thumbnail">
+      	<%= image_tag(product.image_url) %>
+    	</div>
+      <div class="caption">
+        <h3><%= product.title.truncate(50) %></h3>
+        <p><%= sanitize(product.description.truncate(90)) %></p>
+        <p class="price"><%= product.price %></p>
+        <div class="btn btn-default" role="button"><%= link_to 'Show', product %></div> 
+        <div class="btn btn-default" role="button"><%= link_to 'Edit', edit_product_path(product) %></div>
+        <div href="#" class="btn btn-default" role="button"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>
-
-<% @products.each do |product| %>
-	<div class="entry">
-		<%= image_tag(product.image_url) %>
-		<article>
-			<h3><%= product.title %></h3>
-			<p><%= sanitize(product.description) %></p>
-			<span class="price"><%= product.price %></span>
-		</article>
-	</div>
-<% end %>
