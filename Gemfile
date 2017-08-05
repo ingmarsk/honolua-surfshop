@@ -6,11 +6,16 @@ gem 'rails', '4.0.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.3.0'
 
+# Use SCSS for stylesheets
+# gem 'sass-rails', '~> 4.0.0'
+gem 'bootstrap-sass'
+gem 'sass-rails'
+
 # Use dotenv
 gem 'dotenv-rails', :groups => [:development, :test]
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+# Automatically adds proper vendor prefixes to css when compiled
+gem 'autoprefixer-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
