@@ -2,9 +2,23 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
 
+  # Loads the fixture data for Product model into the products table before each test method is run
+  fixtures :products
+
   test "the truth" do
   	# Method assert(). It expects its argument to be true
     assert 4 > 2
+  end
+
+  test "product is not valid without a unique title" do
+    product = Product.new(
+      title: products(:wax).title,
+      description: "blblbl",
+      image_url: "blbl.png",
+      price: 4.99)
+
+    assert product.invalid?
+    assert_equal ["name has already been taken"], product.errors[:title]
   end
 
   test "product attributes must not be empty" do

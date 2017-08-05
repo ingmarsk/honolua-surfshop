@@ -11,3 +11,9 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+
+wax:
+ title: SexWax
+ description: The best for your stick since 1972
+ image_url: wax.jpg
+ price: 4.99
