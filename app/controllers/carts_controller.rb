@@ -57,9 +57,13 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy
+    # Ensure user can only delete their own cart
+    @cart.destroy if @cart.id == session[:cart_id]
+    # Remove the cart from the session
+    session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to carts_url }
+      # Redirect to index with a notification
+      format.html { redirect_to store_url, notice: 'The cart is empty' }
       format.json { head :no_content }
     end
   end
@@ -78,7 +82,7 @@ class CartsController < ApplicationController
     def invalid_cart
       # Use the rails logger to record the error (log/development.log)
       logger.error "Attempt to access invalid cart #{params[:id]}"
-      redirect_to carts_url, notice: 'Invalid cart'
+      redirect_to store_url, notice: 'Invalid cart'
     end
 
 end
