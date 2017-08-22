@@ -1,4 +1,10 @@
 class LineItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :cart
+
+  # Returns the total price for each line item
+  def total_price
+  	product.price * quantity
+  end
+
 end
