@@ -2,29 +2,10 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<div class="panel panel-info">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Cart</div>
-  <!-- Table -->
-  <table class="table">
-  	<tr>
-  		<th>Product Name</th>
-  		<th>Quantity</th>
-  		<th>Price</th>
-  	</tr>
+<!--
+ Here we have access to the instance variable @cart set by the controller.
+ This var is also available inside partials called from the layout but using
+ 'cart' instead of '@cart'
+-->
 
-		<!-- The render() method will iterate over any collection that is passed to it -->
-		<%= render(@cart.line_items) %>
-		
-		<tr>
-			<th>Total</th>
-			<td></td>
-			<td><%= number_to_currency(@cart.total_price) %></td>
-		</tr>
-  </table>
-</div>
-
-<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Delet Cart ?' } %>
-
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= render @cart %>
