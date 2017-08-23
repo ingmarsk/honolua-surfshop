@@ -1,0 +1,7 @@
+<!-- Inside the partial template, the current object is refered using the variable name that matches
+the name of the partial template: line_item  -->
+<tr>
+	<td><%= line_item.product.title %></td>
+	<td><%= line_item.quantity %></td>
+	<td><%= number_to_currency(line_item.total_price) %></td>
+</tr>
