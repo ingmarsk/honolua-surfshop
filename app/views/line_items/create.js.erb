@@ -1,0 +1,4 @@
+// Rails template that generate JavaScript to be executed in the browser
+
+// Replace the content of the div#cart from application_html with this HTML
+$('#cart').html("<%= escape_javascript render(@cart) %>");

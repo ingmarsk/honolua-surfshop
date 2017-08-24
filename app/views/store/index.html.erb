@@ -3,10 +3,6 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<!-- <ol class="breadcrumb">
-  <li class="active">Store</li>
-</ol> -->
-
 <div class="btn btn-default" role="button"><%= link_to 'New Product', new_product_path %></div> 
 
 <!-- Call the overall cache entry 'store' -->
@@ -30,7 +26,7 @@
             <div href="#" class="btn btn-default" role="button">
               <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
-              <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+            <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
           </div>
         </div>
       </div>
