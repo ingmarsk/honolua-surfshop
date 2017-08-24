@@ -2,3 +2,7 @@
 
 // Replace the content of the div#cart from application_html with this HTML
 $('#cart').html("<%= escape_javascript render(@cart) %>");
+
+$('#current_item')
+		.css({'background-color':'#d9edf7'})
+				.animate({'background-color':'#fff'}, 2000);
