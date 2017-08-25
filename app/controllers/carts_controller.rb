@@ -66,7 +66,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       # Redirect to index with a notification
-      format.html { redirect_to store_url, notice: 'The cart is empty' }
+      format.html { redirect_to store_url }
       format.json { head :no_content }
     end
   end

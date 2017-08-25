@@ -1,5 +1,14 @@
 // Rails template that generate JavaScript to be executed in the browser
 
+console.log('create.js.erb');
+
+if ($('#cart tr').length) { 
+	console.log('carts');
+	$('#cart').show('blind', 1000); 
+} else {
+	console.log('no carts');
+}
+
 // Replace the content of the div#cart from application_html with this HTML
 $('#cart').html("<%= escape_javascript render(@cart) %>");
 

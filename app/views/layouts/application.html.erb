@@ -10,9 +10,9 @@
 
 	<%= render "layouts/header" %>
 
-	<div id="cart">
+	<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
 		<%= render @cart %>
-	</div>
+	<% end %>
 
 	<div id="main">
 		<%= yield %>
