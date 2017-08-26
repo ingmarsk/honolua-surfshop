@@ -1,6 +1,11 @@
 <div class="panel panel-info">
   <!-- Default panel contents -->
-  <div class="panel-heading"><b>Your Cart</b></div>
+  <div class="panel-heading">
+    <b>My Cart</b>
+    <button type="button" class="btn btn-default btn-empty-cart">
+      <%= link_to 'Empty cart', cart, method: :delete, data: { confirm: 'Delet Cart ?' } %>
+    </button>
+  </div>
   <!-- Table -->
   <table class="table">
   	<tr>
@@ -25,7 +30,5 @@
   </table>
 </div>
 
-<%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Delet Cart ?' } %>
-
-<%= link_to 'Edit', edit_cart_path(cart) %> |
-<%= link_to 'Back', carts_path %>
+<!-- <%= link_to 'Edit', edit_cart_path(cart) %> -->
+<!-- <%= link_to 'Back', carts_path %> -->
