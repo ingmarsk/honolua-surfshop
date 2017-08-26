@@ -39,10 +39,10 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to store_url, notice: 'Line item successfully created' }
-        # Do not redirect to the index if request comes from JavaScript
-        # When create() finishes with the Ajax request, Rails looks for a "create" template to render
+        # Do not redirect to the index if request comes from JavaScript.
+        # When create() finishes with the Ajax request, Rails looks for a "create" template to render.
         # Identify the most recently updated item in the cart by passing the current line item to the template
-        #   by the @line_item instance variable
+        #   by the @line_item instance variable.
         # format.js 
         format.js { @current_item = @line_item }
         format.json { render action: 'show', status: :created, location: @line_item }
