@@ -17,17 +17,19 @@
         	<%= image_tag(product.image_url) %>
       	</div>
         <div class="caption">
-          <h3><%= product.title.truncate(50) %></h3>
+          <h4><%= product.title.truncate(50) %></h4>
           <p><%= sanitize(product.description.truncate(90)) %></p>
           <h4><span class="label label-success"><%= number_to_currency(product.price) %></span></h4>
-          <div class="product_controls">
-            <div class="btn btn-default" role="button"><%= link_to 'Show', product %></div> 
-            <div class="btn btn-default" role="button"><%= link_to 'Edit', edit_product_path(product) %></div>
-            <div href="#" class="btn btn-default" role="button">
+
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"><%= link_to 'Show', product %></button>
+            <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_product_path(product) %></button>
+            <button type="button" class="btn btn-default">
               <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-            <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
+            </button>
+            <div class="btn btn-default"><%= button_to 'Add Cart', line_items_path(product_id: product), remote: true %></div>  
           </div>
+
         </div>
       </div>
     </div>
