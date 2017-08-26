@@ -28,7 +28,6 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
-
     respond_to do |format|
       if @cart.save
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
@@ -58,12 +57,16 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     # Ensure user can only delete their own cart
-    @cart.destroy if @cart.id == session[:cart_id]
+    # @cart.destroy if @cart.id == session[:cart_id]
+    
+    @cart.destroy
+
     # Remove the cart from the session
-    session[:cart_id] = nil
+    # session[:cart_id] = nil
+
     respond_to do |format|
       # Redirect to index with a notification
-      format.html { redirect_to store_url, notice: 'The cart is empty' }
+      format.html { redirect_to store_url }
       format.json { head :no_content }
     end
   end

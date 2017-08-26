@@ -2,31 +2,10 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<div class="panel panel-info">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Cart</div>
-  <!-- Table -->
-  <table class="table">
-  	<tr>
-  		<th>Product Name</th>
-  		<th>Quantity</th>
-  		<th>Price</th>
-  	</tr>
-		<% @cart.line_items.each do |item| %>
-			<tr>
-				<td><%= item.product.title %></td>
-				<td><%= item.quantity %></td>
-				<td><%= number_to_currency(item.total_price) %></td>
-			</tr>
-		<% end %>   
-			<th>Total</th>
-			<td></td>
-			<td><%= number_to_currency(@cart.total_price) %></td>
-		</tr>
-  </table>
-</div>
+<!--
+ Here we have access to the instance variable @cart set by the controller.
+ This var is also available inside partials called from the layout but using
+ 'cart' instead of '@cart'
+-->
 
-<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= render @cart %>

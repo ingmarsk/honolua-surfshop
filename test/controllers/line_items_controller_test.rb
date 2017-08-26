@@ -23,6 +23,13 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_redirected_to cart_path(assigns(:line_item).cart)
   end
 
+  test "should create line_item via ajax" do
+    assert_difference('LineItem.count') do
+      xhr :post, :create, product_id: products(:wax).id
+    end
+    assert_response :success
+  end
+
   test "should show line_item" do
     get :show, id: @line_item
     assert_response :success
