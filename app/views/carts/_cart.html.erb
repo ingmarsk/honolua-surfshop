@@ -2,9 +2,6 @@
   <!-- Default panel contents -->
   <div class="panel-heading">
     <b>My Cart</b>
-    <button type="button" class="btn btn-default btn-empty-cart">
-      <%= link_to 'Empty cart', cart, method: :delete, data: { confirm: 'Delet Cart ?' } %>
-    </button>
   </div>
   <!-- Table -->
   <table class="table">
@@ -30,5 +27,7 @@
   </table>
 </div>
 
-<!-- <%= link_to 'Edit', edit_cart_path(cart) %> -->
-<!-- <%= link_to 'Back', carts_path %> -->
+<div class="btn-group btn-group-sm" role="group" aria-label="...">
+  <%= link_to 'Checkout', new_order_path, method: :get, class: 'btn btn-success' %>
+  <%= link_to 'Empty cart', cart, method: :delete, data: { confirm: 'Delet Cart ?' }, class: 'btn btn-danger' %>
+</div>

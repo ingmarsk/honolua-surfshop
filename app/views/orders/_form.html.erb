@@ -1,4 +1,5 @@
 <%= form_for(@order) do |f| %>
+
   <% if @order.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
       <h4><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h4>
@@ -13,20 +14,17 @@
   <div class="field">
     <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
   </div>
-
-  <div class="field">
-    <%= f.text_field :address, class: 'form-control', placeholder: 'Address' %>
-  </div>
-
-  <div class="input-group">
+  <div class="field input-group">
     <span class="input-group-addon" id="sizing-addon2">@</span>
     <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
   </div>
-
   <div class="field">
-    <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method' %>
+    <%= f.text_field :address, class: 'form-control', placeholder: 'Address' %>
   </div>
-
+  <div class="field">
+    <%= f.select :pay_type, options_for_select(Order::PAYMENT_TYPES), {}, { class: 'form form-group form-control' } %>
+  </div>
+  
   <div type="button" class="btn-group btn-group-sm">
     <%= f.submit 'Place Order', class: 'btn btn-success' %>
   </div>

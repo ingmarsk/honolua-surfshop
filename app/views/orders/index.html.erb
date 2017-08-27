@@ -1,14 +1,15 @@
-<h1>Listing orders</h1>
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><b>Your Orders</b></div>
 
-<table>
+  <!-- Table -->
+  <table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Address</th>
       <th>Email</th>
       <th>Pay type</th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -20,14 +21,19 @@
         <td><%= order.address %></td>
         <td><%= order.email %></td>
         <td><%= order.pay_type %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div class="btn-group btn-group-sm" role="group" aria-label="...">
+            <%= link_to 'Show', order, class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_order_path(order), class: 'btn btn-default' %>
+            <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+<div class="btn-group btn-group-sm" role="group" aria-label="...">
+  <%= link_to 'New Order', new_order_path, class: 'btn btn-success' %>
+</div>
