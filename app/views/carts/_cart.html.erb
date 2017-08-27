@@ -1,6 +1,8 @@
 <div class="panel panel-info">
   <!-- Default panel contents -->
-  <div class="panel-heading"><b>Your Cart</b></div>
+  <div class="panel-heading">
+    <b>My Cart</b>
+  </div>
   <!-- Table -->
   <table class="table">
   	<tr>
@@ -25,7 +27,7 @@
   </table>
 </div>
 
-<%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Delet Cart ?' } %>
-
-<%= link_to 'Edit', edit_cart_path(cart) %> |
-<%= link_to 'Back', carts_path %>
+<div class="btn-group btn-group-sm" role="group" aria-label="...">
+  <%= link_to 'Checkout', new_order_path, method: :get, class: 'btn btn-success' %>
+  <%= link_to 'Empty cart', cart, method: :delete, data: { confirm: 'Delet Cart ?' }, class: 'btn btn-danger' %>
+</div>

@@ -2,6 +2,8 @@
 
 console.log('POST / Processing by LineItemsController#create as JS');
 
+$('#notice').fadeOut("slow");
+
 if ($('#cart tr').length) { 
 	console.log('carts');
 	$('#cart').show('blind', 1000); 
