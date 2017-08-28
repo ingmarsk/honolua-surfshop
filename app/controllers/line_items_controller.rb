@@ -1,5 +1,9 @@
 class LineItemsController < ApplicationController
 
+  # Whitelisting: mark following method as NOT required.
+  # But only skip authorize() for create, so users can add products to their carts.
+  skip_before_action :authorize, only: :create
+
   # Inlcudes the CurrentCart module
   include CurrentCart
 
