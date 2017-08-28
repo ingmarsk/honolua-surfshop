@@ -35,13 +35,14 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)          # Create a new Order and initialize it from the form data
-    @order.add_line_items_from_cart(@cart)    # Adds into the order the items already stored in the cart
+    @order = Order.new(order_params)                  # Create a new Order and initialize it from the form data
+    @order.add_line_items_from_cart(@cart)            # Adds into the order the items already stored in the cart
 
     respond_to do |format|
-      if @order.save                          # Save order and its children (line items) to db
+      if @order.save                                  # Save order and its children (line items) to db
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        OrderNotifier.received(@order).deliver        # Pass the order obj to the email controller
         format.html { redirect_to store_url, notice: 'Thank you for your order.' }
         format.json { render action: 'show', status: :created, location: @order }
       else

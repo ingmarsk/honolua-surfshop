@@ -1,0 +1,15 @@
+<h3>Hi <%= @order.name %></h3>
+
+<b>Thank you for your order from Honolua SurfShop!</b>
+
+<p>You ordered the following items:</p>
+
+<table>
+	<tr>
+		<th colspan='2'>Quantity</th>
+		<th>Description</th>
+		<%= render @order.line_items %>
+	</tr>
+</table>
+
+A separate e-mail will be send to you when the order ships.
