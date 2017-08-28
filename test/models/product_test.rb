@@ -18,7 +18,7 @@ class ProductTest < ActiveSupport::TestCase
       price: 4.99)
 
     assert product.invalid?
-    assert_equal ["name has already been taken"], product.errors[:title]
+    assert_equal ["has already been taken"], product.errors[:title]
   end
 
   test "product attributes must not be empty" do

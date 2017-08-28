@@ -1,0 +1,9 @@
+Hi <%= @order.name %>
+
+Thank you for your order from Honolua SurfShop!
+
+You ordered the following items:
+
+<%= render @order.line_items -%>
+
+A separate e-mail will be send to you when the order ships.

@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-	product: wax
-	order: one
+ product: wax
+ order: one
 
 two:
-	product: wax
-	order: one
+ product: wax
+ order: one
 
 # one:
 #   product_id: 
