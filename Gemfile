@@ -11,6 +11,8 @@ gem 'mysql2', '~> 0.3.0'
 gem 'bootstrap-sass'
 gem 'sass-rails'
 
+gem 'haml'
+
 # Use dotenv
 gem 'dotenv-rails', :groups => [:development, :test]
 
