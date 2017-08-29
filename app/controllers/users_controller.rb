@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html { 
           redirect_to users_url,
-          notice: 'User #{@user.name} successfully created.' 
+          notice: "User #{@user.name} successfully created." 
         }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         format.html { 
           redirect_to users_url,
-          notice: 'User #{@user.name} successfully updated.' 
+          notice: "User #{@user.name} successfully updated." 
         }
         format.json { head :no_content }
       else
