@@ -1,0 +1,19 @@
+.panel.panel-info
+  .panel-heading
+    %b My Cart
+
+  %table{:class => "table"}
+    %tr
+      %th Product Name
+      %th Quantity
+      %th Price
+    - unless cart.line_items.empty?
+      = render(@cart.line_items)
+    %tr
+      %th Total
+      %th
+      %th= number_to_currency(cart.total_price)
+
+.btn-group.btn-group-sm
+  = link_to 'Checkout', new_order_path, method: :get, class: 'btn btn-success'
+  = link_to 'Empty', cart, method: :delete, class: 'btn btn-danger', data: { confirm: 'Delet Cart ?' }
