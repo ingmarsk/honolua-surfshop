@@ -4,8 +4,8 @@ class OrdersController < ApplicationController
   include CurrentCart
 
   # Whitelisting: mark following method as NOT required.
-  # But only skip authorize() for new and create , so users can manage their orders.
-  skip_before_action :authorize, only: [:create, :create]
+  # But only skip authorize() for new and create , so users can manage their orders (i.e: checkout items).
+  skip_before_action :authorize, only: [:new, :create]
 
   before_action :set_cart, only: [:new, :create]     
   before_action :set_order, only: [:show, :edit, :update, :destroy]

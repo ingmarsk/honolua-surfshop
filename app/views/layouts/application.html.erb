@@ -11,10 +11,12 @@
 	<%= render "layouts/header" %>
 
 	<div class="row main-wrapper">
-		<div class="col-md-3 cart-wrapper">
-			<% if @cart %>
-				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-					<%= render @cart %>
+		<div class="col-md-3">
+			<% unless session[:user_id] %>
+				<% if @cart %>
+					<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+						<%= render @cart %>
+					<% end %>
 				<% end %>
 			<% end %>
 		</div>

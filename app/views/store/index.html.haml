@@ -1,0 +1,25 @@
+- if notice
+  %div#notice.alert.alert-info
+    %p= notice
+
+/ Call the overall cache entry 'store'
+= cache ['store', Product.latest] do
+  .row
+    - @products.each do |product|
+      / Call the individual cache entry as 'entry'
+      = cache ['entry', product] do
+        .col-sm-12.col-md-3
+          .product
+            = link_to image_tag(product.image_url), product, class: 'thumbnail'
+            .caption
+              %h5= product.title.truncate(30)
+              %p= sanitize(product.description.truncate(80))
+              %h4#price
+                %span.label.label-info= number_to_currency(product.price)
+              .btn-group.btn-group-sm
+              - if session[:user_id]
+                = link_to 'Edit', edit_product_path(product), class: 'btn btn-default'
+                = link_to 'Delete', product, method: :delete, data: { confirm: "Delete #{product.title.truncate(20)} from products cathalog ?" }, class: 'btn btn-danger'
+              - else 
+                = link_to 'Add to cart', line_items_path(product_id: product), method: :post, remote: true, class: 'btn btn-success'
+                
