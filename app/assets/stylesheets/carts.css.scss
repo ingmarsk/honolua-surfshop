@@ -3,7 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #cart {
-	padding: 1em;
-	padding-left: 2em;
-  padding-right: 0.5em;
+	padding-top: 1em;
+	padding-left: 1em;
+
+	#price {
+		display: inline!important;
+	}
 }
