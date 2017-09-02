@@ -11,7 +11,8 @@ gem 'mysql2', '~> 0.3.0'
 gem 'bootstrap-sass'
 gem 'sass-rails'
 
-gem 'haml'
+# Use Haml as the default template engine and provides generators
+gem "haml-rails"
 
 # Use dotenv
 gem 'dotenv-rails', :groups => [:development, :test]
