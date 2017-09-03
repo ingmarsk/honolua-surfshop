@@ -11,6 +11,12 @@ gem 'mysql2', '~> 0.3.0'
 gem 'bootstrap-sass'
 gem 'sass-rails'
 
+# Use Haml as the default template engine and provides generators
+gem "haml-rails"
+
+# Adds rake tasks to convert or replace all ERB view templates to Haml
+gem "erb2haml", :group => :development
+
 # Use dotenv
 gem 'dotenv-rails', :groups => [:development, :test]
 

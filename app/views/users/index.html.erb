@@ -1,31 +1,45 @@
-<h1>Listing users</h1>
-
 <% if notice %>
-<p id="notice"><%= notice %></p>
+<div id="notice" class="alert alert-success" role="alert">
+  <p><%= notice %></p>
+</div>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><b>Listing users</b></div>
 
-  <tbody>
-    <% @users.each do |user| %>
+  <!-- Table -->
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.created_at %></td>
+          <td><%= user.updated_at %></td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group" aria-label="...">
+              <%= link_to 'Show', user, class: 'btn btn-default' %>
+              <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-default' %>
+              <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%= link_to 'New User', new_user_path %>
+<div class="btn-group btn-group-sm" role="group" aria-label="...">
+  <%= link_to 'New User', new_user_path, class: 'btn btn-success' %>
+</div>
+
+<br><br>

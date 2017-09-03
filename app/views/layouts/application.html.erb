@@ -10,18 +10,18 @@
 
 	<%= render "layouts/header" %>
 
-	<div class="row main-wrapper">
-		<div class="col-md-3 cart-wrapper">
+	<div id="main" class="clearfix">
+		<div id="left-bar">
+		<% unless session[:user_id] %>
 			<% if @cart %>
 				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
 					<%= render @cart %>
 				<% end %>
 			<% end %>
+		<% end %>
 		</div>
-		<div class="col-md-9 index-wrapper">
-			<div id="main">
-				<%= yield %>
-			</div>
+		<div id="content">
+			<%= yield %>
 		</div>
 	</div>
 

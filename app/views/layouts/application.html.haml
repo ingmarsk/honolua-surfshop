@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title Honolua SurfShop
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body{:class => "#{controller.controller_name}"}
+    = render "layouts/header"
+    .row.main-wrapper
+      .col-md-3
+        - unless session[:user_id]
+          - if @cart
+            = hidden_div_if(@cart.line_items.empty?, id: 'cart') do
+              = render @cart
+      .col-md-9.index-wrapper
+        #main
+          = yield
+    = render "layouts/footer"

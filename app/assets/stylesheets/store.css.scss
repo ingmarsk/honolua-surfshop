@@ -1,11 +1,15 @@
 .product {
 	border: 1px solid #dddddd;
 	padding: 0.5em;
-	margin-bottom: 10px;
+	margin-bottom: 7px;
 	border-radius: 4px;
+	width: calc((100%/3) - 6px);
+	margin-right: 3px;
+  display: inline-block;
+  background-color: #f4f5f5;
 
 	img {
-		height: 20em!important;
+		height: 15em!important;
 	}
 
 	.product_controls {
