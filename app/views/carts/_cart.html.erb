@@ -1,0 +1,33 @@
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <b>My Cart</b>
+  </div>
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+
+    <!-- 
+      The render() method will iterate over any collection that is passed to it.
+      A partial can invoke other partials.
+     -->
+    <% unless cart.line_items.empty? %>
+      <%= render(cart.line_items) %>
+    <% end %>
+    
+    <tr>
+      <th>Total</th>
+      <td></td>
+      <td><%= number_to_currency(cart.total_price) %></td>
+    </tr>
+  </table>
+</div>
+
+<div class="btn-group btn-group-sm" role="group" aria-label="...">
+  <%= link_to 'Checkout', new_order_path, method: :get, class: 'btn btn-success' %>
+  <%= link_to 'Empty cart', cart, method: :delete, data: { confirm: 'Delet Cart ?' }, class: 'btn btn-danger' %>
+</div>
