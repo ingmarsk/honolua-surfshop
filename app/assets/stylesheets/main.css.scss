@@ -2,10 +2,8 @@
 	padding-top: 4.5em;
 	background: #e5eaec;
 	min-height: 50em;
-	border: 2px solid red;
 
 	#left-bar {
-		border: 2px solid purple;
 		width: 30%;
 		padding-top: 0em;
 		padding-left: 1em;
@@ -16,7 +14,6 @@
 	}
 
 	#content {
-    border: 2px solid green;
     width: 70%;
     float: right;
     /*min-height: inherit;*/
