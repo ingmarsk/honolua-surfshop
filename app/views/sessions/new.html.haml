@@ -1,0 +1,12 @@
+#login-panel
+  .alert.alert-info{:role => "alert"}
+    %p 
+      This functionality requires credentials to continue. Please, log in if you are an
+      %b Administrator
+  = form_tag do
+    .field
+      = text_field_tag :name, params[:name], placeholder: 'Name', class: 'form-control'
+    .field
+      = password_field_tag :password, params[:password], placeholder: 'Password', class: 'form-control'
+    .btn-group.btn-group-sm{:type => "button"}
+      = submit_tag 'Login', class: 'btn btn-success'

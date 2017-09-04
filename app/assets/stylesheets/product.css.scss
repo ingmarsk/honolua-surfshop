@@ -1,7 +1,21 @@
 #product_show {
-	.product {
-		height: auto;
-    padding-left: 2em;
-    padding-right: 2em;
+	height: auto;
+	padding-left: 2em;
+	padding-right: 2em;
+	padding: 0.5em;
+	margin-bottom: 7px;
+	border-radius: 1px;
+	width: 100%;
+	margin-right: 3px;
+	display: inline-block;
+	background-color: #fff;
+	font-size: 13px;
+	-webkit-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+
+	.thumbnail {
+		margin-bottom: 0px
 	}
+
 }
