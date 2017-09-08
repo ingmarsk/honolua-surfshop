@@ -8,13 +8,14 @@ class SessionsController < ApplicationController
 
   # Store User ID in the session (Login)
   def create
-  	user = User.find_by(name: params[:name])
-  	if user and user.authenticate(params[:password])
-  		session[:user_id] = user.id
-  		redirect_to admin_url
-  	else
+    # binding.pry
+  	# user = User.find_by(name: params[:name])
+  	# if user and user.authenticate(params[:password])
+  		# session[:user_id] = user.id
+  		# redirect_to admin_url
+  	# else
   		redirect_to login_url, alert: "Invalid user or password"
-  	end
+  	# end
   end
 
   def destroy

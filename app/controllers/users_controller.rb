@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
+  # Returns view displaying the signup page
   def new
     @user = User.new
   end
@@ -23,14 +24,17 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
+  # The signup form from New is submitted and here the data is saved to the db
   def create
+    # binding.pry
     @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { 
-          redirect_to users_url,
-          notice: "User #{@user.name} successfully created." 
+          redirect_to store_path,
+          notice: "Thanks #{@user.first_name}!, your account has been successfully created." 
         }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -80,6 +84,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 end

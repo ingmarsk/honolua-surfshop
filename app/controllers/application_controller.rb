@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Invoke authorize() before every action in whole the app
-  before_action :authorize
+  # before_action :authorize
 
   # Prevents methods below of being exposed to end users as an action
   protected

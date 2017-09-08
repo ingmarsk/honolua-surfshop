@@ -7,6 +7,8 @@ Honolua::Application.routes.draw do
     post    'login' => :create
     delete  'logout' => :destroy
   end
+
+  get 'signup' => 'users#new'
   
   resources :users
   resources :orders
