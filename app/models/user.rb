@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
 	validates :name, presence: true, uniqueness: true
 
+  # Adds functionality to save passwords securely using the Bcrypt algorithm
   has_secure_password
 
   # Call method after the SQL delete for User's objects

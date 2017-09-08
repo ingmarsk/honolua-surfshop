@@ -49,8 +49,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
+# Use ActiveModel has_secure_password for hashing passwords
 gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Adds step-by-step debugging and stack navigation capabilities to pry using byebug
+gem 'pry-byebug'
 
 # Use unicorn as the app server
 # gem 'unicorn'
