@@ -1,0 +1,15 @@
+= form_for(@user) do |f|
+  - if @user.errors.any?
+    #error_explanation.alert.alert-danger
+      %h5
+        = pluralize(@user.errors.count, "error")
+        prohibited to create your new account: 
+      %ul
+      - @user.errors.full_messages.each do |err_msg|
+        %li= err_msg  
+  .field= f.text_field :first_name, placeholder: 'First Name', class: 'form-control'
+  .field= f.text_field :last_name, placeholder: 'Last Name', class: 'form-control'
+  .field= f.text_field :email, placeholer: 'Email', class: 'form-control'
+  .field= f.password_field :password, placeholder: 'Password', class: 'form-control'
+  .field= f.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'form-control'
+  .btn-group-sm= f.submit 'Create New Account', class: 'btn btn-success'
