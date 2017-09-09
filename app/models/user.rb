@@ -6,13 +6,28 @@ class User < ActiveRecord::Base
   validates :password, presence: true
   validates :password_confirmation, presence: true
 
+  # Call method after the SQL delete for User's objects
+  after_destroy :ensure_at_least_an_admin_remains
+
   # Adds functionality to save passwords securely using the Bcrypt algorithm.
   # when a user logs in again, has_secure_password will collect the password that was submitted,
   # hash it with bcrypt, and check if it matches the hash from password_digest column.
   has_secure_password
 
-  # Call method after the SQL delete for User's objects
-  after_destroy :ensure_at_least_an_admin_remains
+  # The buyers uses the app to browse the products that the sellers have to sell
+  def buyer?
+    self.role == 'buyer'
+  end
+
+  # The sellers uses the app to create and sell products
+  def seller?
+    self.role == 'seller'
+  end
+
+  # The admins uses the app to monitor and manage all products, users and their transactions 
+  def admin?
+    self.role == 'admin'
+  end
 
   private
 
