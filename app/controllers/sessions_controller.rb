@@ -18,8 +18,10 @@ class SessionsController < ApplicationController
     # password_digest stored in the db for this user. Returns the #<User> object if password matches or false.
     if @user && @user.authenticate(params[:session][:password])
 
-      # If user athenticated, its id is stored in the session so now he's logged in
+      # Save the user id inside the browser cookie. 
+      # This is how we keep the user logged in when they navigate around the site.
       session[:user_id] = @user.id
+      
       # Also store the name for the nocie alert (not necessary)
       session[:user_first_name] = @user.first_name
       redirect_to store_url, notice: "Welcome back #{@user.first_name}!"
