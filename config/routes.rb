@@ -9,7 +9,6 @@ Honolua::Application.routes.draw do
   end
 
   get '/signup' => 'users#new'
-  get '/login' => 'sessions#new'
   
   resources :users
   resources :orders

@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
 
   # Store User ID in the session (Login)
   def create
-    binding.pry
     # Grab the data submited from the new/_form sent inside the params hash.
     # Parameters: {..., "session"=>{"email"=>"...", "password"=>"..."}, ...}
 
@@ -21,14 +20,19 @@ class SessionsController < ApplicationController
 
       # If user athenticated, its id is stored in the session so now he's logged in
       session[:user_id] = @user.id
-      redirect_to store_url
+      # Also store the name for the nocie alert (not necessary)
+      session[:user_first_name] = @user.first_name
+      redirect_to store_url, notice: "Welcome back #{@user.first_name}!"
     else
       redirect_to login_url, alert: "Invalid credentials, please try again."      
     end
   end
 
+  # Logout
   def destroy
+    # binding.pry
+    user_first_name = session[:user_first_name]
   	session[:user_id] = nil
-  	redirect_to store_url, notice: "Logged out"
+  	redirect_to store_url, notice: "See you #{user_first_name}!"
   end
 end
