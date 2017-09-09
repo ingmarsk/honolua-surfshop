@@ -3,16 +3,24 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # Invoke authorize() before every action in whole the app
-  before_action :authorize
+  # Makes current_user method available in the views
+  helper_method :current_user
+
+  # Determines whether a user is logged in or logged out.
+  # Checks whether there's a user in the database with a given session id. 
+  # If there is, this means the user is logged in and @current_user will store that user,
+  # otherwise the user is logged out and @current_user will be nil
+  def current_user
+    # a ? a : a = b
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  # Redirect logged out users to the login page
+  def require_user
+    redirect_to login_url unless current_user
+  end
 
   # Prevents methods below of being exposed to end users as an action
   protected
-
-	# If user has no session (its not an admin) redirec to login
-  def authorize
-  	unless User.find_by(id: session[:user_id])				
-  		redirect_to login_url, notice: "Please log in"
-  	end
-  end
+	
 end

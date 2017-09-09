@@ -1,14 +1,13 @@
-<div class="panel panel-info">
+<div class="panel panel-success">
   <!-- Default panel contents -->
   <div class="panel-heading">
-    <b>My Cart</b>
+    <b>Your Cart</b>
   </div>
   <!-- Table -->
   <table class="table">
     <tr>
       <th>Product Name</th>
       <th>Quantity</th>
-      <th>Price</th>
     </tr>
 
     <!-- 
@@ -21,7 +20,6 @@
     
     <tr>
       <th>Total</th>
-      <td></td>
       <td><%= number_to_currency(cart.total_price) %></td>
     </tr>
   </table>

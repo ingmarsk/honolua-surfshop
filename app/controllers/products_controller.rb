@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  skip_before_action :authorize, only: [:show]
+  # Prevent logged out users from editing products
+  before_action :require_user, only: [:edit, :update, :destroy]
+
 
   # GET /products
   # GET /products.json
