@@ -11,5 +11,5 @@
           %span.label.label-success= @product.price
           .product_controls
 
-      - if session[:user_id]
+      - if current_user.seller?
         = link_to 'Edit', edit_product_path(@product), :class => "btn btn-default"

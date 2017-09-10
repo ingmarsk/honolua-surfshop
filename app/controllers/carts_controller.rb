@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
 
+  before_action :require_buyer
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
   # Whitelisting: mark following method as NOT required.

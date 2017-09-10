@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   # Makes current_user method available in the views
   helper_method :current_user
+  helper_method :require_buyer
+  helper_method :require_seller
 
   # Determines whether a user is logged in or logged out.
   # Checks whether there's a user in the database with a given session id. 
@@ -18,6 +20,14 @@ class ApplicationController < ActionController::Base
   # Redirect logged out users to the login page
   def require_user
     redirect_to login_url unless current_user
+  end
+
+  def require_buyer
+    redirect_to store_url if !current_user || !current_user.buyer?  
+  end
+
+  def require_seller
+    redirect_to store_url if !current_user || !current_user.seller?
   end
 
   # Prevents methods below of being exposed to end users as an action

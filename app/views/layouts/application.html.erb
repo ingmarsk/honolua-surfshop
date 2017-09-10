@@ -12,9 +12,12 @@
 
 	<div id="main" class="clearfix">
 		<div id="left-bar">
-		<% if @cart && current_user %>
-			<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-				<%= render @cart %>
+		<!-- Only show cart if cart exists and the user is logged in and is a buyer -->
+		<% if current_user %>
+			<% if @cart && current_user.buyer? %>
+				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+					<%= render @cart %>
+				<% end %>
 			<% end %>
 		<% end %>
 		</div>
