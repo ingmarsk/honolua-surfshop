@@ -24,7 +24,13 @@ class SessionsController < ApplicationController
       
       # Also store the name for the nocie alert (not necessary)
       session[:user_first_name] = @user.first_name
-      redirect_to store_url, notice: "Welcome back #{@user.first_name}!"
+
+      if @user.role == 'admin'
+        redirect_to admin_url
+      else
+        redirect_to store_url, notice: "Welcome back #{@user.first_name}!"
+      end
+      
     else
       redirect_to login_url, alert: "Invalid credentials, please try again."      
     end

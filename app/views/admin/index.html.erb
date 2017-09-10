@@ -1,5 +1,26 @@
-<h3>Welcome</h3>
-
-It's <%= Time.now %>
-
-We have <%= pluralize(@total_orders, "order") %>.
+<div id="login-panel" class="list-group">
+	<div class="page-header">
+	<h3>Admin Panel</h3>
+</div>
+  <a href="/users" class="list-group-item">
+    <h4 class="list-group-item-heading">List of Users</h4>
+    <p class="list-group-item-text">Here you can manage all registered accounts</p>
+    <button class="count-btn btn btn-danger" type="button">
+		  <span class="badge"><%= pluralize(@total_users, "user") %></span>
+		</button>
+  </a>
+  <a href="/orders" class="list-group-item">
+    <h4 class="list-group-item-heading">List of Orders</h4>
+    <p class="list-group-item-text">Here you can manage all the orders made by our buyer users</p>
+    <button class="count-btn btn btn-danger" type="button">
+		  <span class="badge"><%= pluralize(@total_orders, "order") %></span>
+		</button>
+  </a>
+  <a href="/products" class="list-group-item">
+    <h4 class="list-group-item-heading">List of Products</h4>
+    <p class="list-group-item-text">Here you can manage the whoe list of products created by the sellers</p>
+    <button class="count-btn btn btn-danger" type="button">
+		  <span class="badge"><%= pluralize(@total_products, "product") %></span>
+		</button>
+  </a>
+</div>

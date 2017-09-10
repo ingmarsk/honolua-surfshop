@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
   # Get access to the current Cart for this controller
   include CurrentCart
 
-  before_action :require_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_buyer, only: [:new, :create, :edit, :update]
+  before_action :require_admin, only: [:index, :destroy]
 
   before_action :set_cart, only: [:new, :create]     
   before_action :set_order, only: [:show, :edit, :update, :destroy]

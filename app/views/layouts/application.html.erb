@@ -18,6 +18,10 @@
 				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
 					<%= render @cart %>
 				<% end %>
+			<% elsif current_user.admin? %>
+				<button id="admin-panel-btn" type="button" class="btn btn-danger">
+					<%= link_to 'Admin Panel', admin_url %>
+				</button>
 			<% end %>
 		<% end %>
 		</div>
