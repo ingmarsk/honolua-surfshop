@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :edit, :create, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    # @users = User.order(:name)
-    redirect_to store_path
+    @users = User.order(:first_name)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    redirect_to store_path
   end
 
   # GET /users/new
