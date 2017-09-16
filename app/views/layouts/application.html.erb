@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body class='<%= controller.controller_name %>'>
 
@@ -18,6 +19,10 @@
 				<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
 					<%= render @cart %>
 				<% end %>
+			<% elsif current_user.seller? %>
+				<button id="admin-panel-btn" type="button" class="btn btn-success">
+					<%= link_to 'New Product', new_product_url %>
+				</button>
 			<% elsif current_user.admin? %>
 				<button id="admin-panel-btn" type="button" class="btn btn-danger">
 					<%= link_to 'Admin Panel', admin_url %>
