@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)                  # Create a new Order and initialize it from the form data
+    @order = Order.new(order_params)                  # Create a new Order and initialize it from the form params hash
     @order.add_line_items_from_cart(@cart)            # Adds into the order the items already stored in the cart
 
     respond_to do |format|

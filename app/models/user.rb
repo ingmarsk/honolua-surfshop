@@ -1,12 +1,19 @@
 class User < ActiveRecord::Base
 
+  # Validations
+  
 	validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
   validates :password, presence: true
   validates :password_confirmation, presence: true
 
-  # Call method after the SQL delete for User's objects
+  # Active Record callbacks
+
+  after_create do |user|
+    logger.info "User #{user.id} - #{user.first_name} created"
+  end
+
   after_destroy :ensure_at_least_an_admin_remains
 
   # Adds functionality to save passwords securely using the Bcrypt algorithm.
