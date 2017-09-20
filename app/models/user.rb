@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   # Validations
-  
+
 	validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
@@ -10,10 +10,15 @@ class User < ActiveRecord::Base
 
   # Active Record callbacks
 
+  # Handler method 
+  before_save :set_default_user_role
+
+  # Handler block (receives the object model as a param)
   after_create do |user|
     logger.info "User #{user.id} - #{user.first_name} created"
   end
 
+  # Handler method 
   after_destroy :ensure_at_least_an_admin_remains
 
   # Adds functionality to save passwords securely using the Bcrypt algorithm.
@@ -37,6 +42,11 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  # Assign role attr to 'buyer' if role is false or nil
+  def set_default_user_role
+    self.role ||= 'buyer'
+  end
 
   # If the SQL transaction 'delete' raises an exception, roll it back.
   # Raising an exception inside a transaction causes an automatic rollback.

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:index, :show, :edit, :create, :update, :destroy]
-  
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
+
   # GET /users
   def index
     @users = User.order(:first_name)
