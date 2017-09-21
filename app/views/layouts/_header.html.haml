@@ -7,8 +7,11 @@
         - if current_user
           %li
             %a
-              Hi there,
+              Signed in as
               = current_user.first_name
+              [
+              = current_user.role
+              mode ]
           / %li= link_to 'Users', users_path
           / %li= link_to 'Orders', orders_path
           / %li= link_to 'Create a Product', new_product_path

@@ -7,15 +7,13 @@ gem 'rails', '4.0.0'
 gem 'mysql2', '~> 0.3.0'
 
 # Use SCSS for stylesheets
-# gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
+
+# gem 'sass-rails', '~> 4.0.0'
 gem 'sass-rails'
 
 # Use Haml as the default template engine and provides generators
 gem "haml-rails"
-
-# Adds rake tasks to convert or replace all ERB view templates to Haml
-gem "erb2haml", :group => :development
 
 # Use dotenv
 gem 'dotenv-rails', :groups => [:development, :test]
@@ -52,8 +50,15 @@ end
 # Use ActiveModel has_secure_password for hashing passwords
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Adds step-by-step debugging and stack navigation capabilities to pry using byebug
-gem 'pry-byebug'
+
+group :development do
+	# Adds step-by-step debugging and stack navigation capabilities to pry using byebug
+	gem 'pry-byebug'
+	# Generates Entity-Relationship Diagrams (rake erd)
+  gem "rails-erd"
+  # Adds rake tasks to convert or replace all ERB view templates to Haml
+	gem "erb2haml"
+end
 
 # Use unicorn as the app server
 # gem 'unicorn'

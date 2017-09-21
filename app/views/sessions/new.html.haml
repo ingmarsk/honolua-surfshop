@@ -1,9 +1,13 @@
 #login-panel
   %h4 Log in to your account
   %br
-  / form for without Session model
+  / login_path -> POST url for sending the submited data
   = form_for(:session, url: login_path) do |f|
-    .field= f.email_field :email, placeholder: 'Email', class: 'form-control'
+    .field.input-group
+      %span.input-group-addon @
+      = f.email_field :email, placeholder: 'Email', class: 'form-control'
+
     .field= f.password_field :password, placeholder: 'Password', class: 'form-control'
+
     .btn-group.btn-group-sm{:type => "button"}
       = f.submit 'Log in', class: 'btn btn-success'

@@ -3,9 +3,8 @@ class OrdersController < ApplicationController
   # Get access to the current Cart for this controller
   include CurrentCart
 
-  # Whitelisting: mark following method as NOT required.
-  # But only skip authorize() for new and create , so users can manage their orders (i.e: checkout items).
-  skip_before_action :authorize, only: [:new, :create]
+  before_action :require_buyer, only: [:new, :create, :edit, :update]
+  before_action :require_admin, only: [:index, :destroy]
 
   before_action :set_cart, only: [:new, :create]     
   before_action :set_order, only: [:show, :edit, :update, :destroy]
@@ -39,7 +38,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)                  # Create a new Order and initialize it from the form data
+    @order = Order.new(order_params)                  # Create a new Order and initialize it from the form params hash
     @order.add_line_items_from_cart(@cart)            # Adds into the order the items already stored in the cart
 
     respond_to do |format|
