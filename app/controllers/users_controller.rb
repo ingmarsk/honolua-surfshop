@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /users
-  # GET /users.json
   def index
-    # @users = User.order(:name)
-    redirect_to store_path
+    @users = User.order(:first_name)
   end
 
   # GET /users/1
-  # GET /users/1.json
   def show
-    redirect_to store_path
   end
 
   # GET /users/new
@@ -26,7 +23,6 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   # The signup form from New is submitted and here the data is saved to the db
   def create
     # binding.pry
@@ -48,7 +44,6 @@ class UsersController < ApplicationController
   end
 
   # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -65,7 +60,6 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     begin
       @user.destroy
@@ -81,7 +75,7 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
+    def find_user
       @user = User.find(params[:id])
     end
 

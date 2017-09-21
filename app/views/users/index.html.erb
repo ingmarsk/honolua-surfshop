@@ -4,7 +4,7 @@
 </div>
 <% end %>
 
-<div class="panel panel-info">
+<div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading"><b>Listing users</b></div>
 
@@ -13,8 +13,8 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Created at</th>
-        <th>Updated at</th>
+        <th>Email</th>
+        <th>Role</th>
         <th></th>
       </tr>
     </thead>
@@ -22,9 +22,9 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <!-- <td><%= user.name %></td> -->
-          <td><%= user.created_at %></td>
-          <td><%= user.updated_at %></td>
+          <td><%= user.first_name %> <%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
           <td>
             <div class="btn-group btn-group-sm" role="group" aria-label="...">
               <%= link_to 'Show', user, class: 'btn btn-default' %>

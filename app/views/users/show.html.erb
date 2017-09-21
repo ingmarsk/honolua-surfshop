@@ -1,9 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= @user.first_name %> <%= @user.last_name %></td>
+        <td><%= @user.email %></td>
+        <td><%= @user.role %></td>
+        <td><%= @user.created_at %></td>
+        <td><%= @user.updated_at %></td>
+        <td>
+          <div class="btn-group btn-group-sm" role="group" aria-label="...">
+            <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default' %>
+            <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
