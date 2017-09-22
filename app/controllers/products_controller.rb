@@ -9,6 +9,12 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+
+    respond_to do |format|
+      format.html
+      format.xml { render xml: @products.to_xml }
+      format.yaml { render text: @products.to_yaml }
+    end
   end
 
   # GET /products/1
