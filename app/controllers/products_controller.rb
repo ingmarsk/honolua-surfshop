@@ -3,12 +3,21 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :require_seller, only: [:new, :create, :edit, :update, :destroy]
   before_action :require_admin, only: [:index]
+  before_action only: [:edit, :update, :destroy] do
+    seller_owns_this_product?(@product)
+  end
 
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+
+    respond_to do |format|
+      format.html
+      format.xml { render xml: @products.to_xml }
+      format.yaml { render text: @products.to_yaml }
+    end
   end
 
   # GET /products/1
@@ -74,5 +83,12 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price)
+    end
+
+    # Restrict sellers to manage only their own products
+    def seller_owns_this_product?(product)
+      # TODO: store the associated user's seller_id into sesssion to avoid same query for each req
+      current_seller = Seller.find_by(user_id: session[:user_id]) if session[:user_id]
+      redirect_to store_url unless current_seller.user_id == product.seller_id
     end
 end
