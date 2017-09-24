@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
 
+	belongs_to :seller
 	has_many :line_items
 
 	# Hook method called by Rails before attempting to destroy a row in the db.
